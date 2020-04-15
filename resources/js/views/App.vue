@@ -8,7 +8,11 @@
             </h2>
             <h4 class="text-center" v-if="!subRedditName">There is no
                 <span class="text-danger">{{erroneousSubreddit}}</span>
-                subreddit, enter an existing subreddit into the url path
+                subreddit, enter an existing subreddit into the url path<br>
+                for instance:
+                <a href="/sandiego">/r/sandiego</a>&nbsp;&nbsp;
+                <a href="/technology">/r/technology</a>&nbsp;&nbsp;
+                <a href="/api">/r/api</a>&nbsp;&nbsp;
             </h4>
         </div>
         <div id="upper_pane" class="container-fluid view_panes">
@@ -18,10 +22,10 @@
                      :key="index"
                      :style="index % 2 === 0 ? 'background:#FFEDE9' : ''">
                     <div class="col-md-1 reddit_post__img"><img src="/imgs/redditLogo.png"></div>
-                    <div class="col-md-9"><a :href="post.data.url">{{post.data.title}}</a></div>
+                    <div class="col-md-9"><a :href="`https://www.reddit.com/${post.data.permalink}`">{{post.data.title}}</a></div>
                     <div class="col-md-2">{{getPostDate(post.data.created_utc)}}</div>
                 </div>
-                <div class="row mb-5 py-3 text-capitalize scrollMore" style="background: #ff4500">
+                <div v-if="subRedditName" class="row mb-5 py-3 text-capitalize scrollMore" style="background: #ff4500">
                     <h1 class="text-center text-white w-100">scroll to load more</h1>
                 </div>
             </div>
