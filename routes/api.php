@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/lazyLoadCurrent', 'RedditController@lazyLoad');
+Route::post('/lazyLoadCurrent', 'RedditController@lazyLoad');
+Route::post('/reloadPosts', 'RedditController@reloadPosts');
