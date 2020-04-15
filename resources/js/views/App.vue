@@ -16,7 +16,7 @@
             </h4>
         </div>
         <div id="upper_pane" class="container-fluid view_panes">
-            <div class="floatClear"></div>
+            <div class="loading"></div>
             <div class="reddit_posts--wrapper">
                 <div :class="`row ${index !== 0 ? 'my-2' : ''} py-3 reddit_post`" v-for="(post, index) in posts"
                      :key="index"
@@ -64,6 +64,7 @@
         },
         mounted() {
             let self = this;
+            $('.loading').hide()
             $("#postNumberDropdown .dropdown-item").on("click", function (event) {
                 event.preventDefault();
                 self.postsPerCall = $(event.target).data('value');
@@ -103,25 +104,11 @@
                 var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
                 return time;
             },
-            reloadPosts(limit) {
-                $('#upper_pane').addClass('loading');
-                axios.post('/api/reloadPosts', {limit,subreddit:window.location.pathname.substr(1)})
-                    .then(redditResponse => {
-                        console.log(redditResponse);
-                        this.posts = redditResponse.data.data.children;
-                    })
-                    .catch(e => {
-                        this.errors.push(e)
-                    })
-                .finally(e =>{
-                    $('#upper_pane').removeClass('loading');
-                });
-            },
             paginate(type) {
                 let hash = type === 'after' ? this.after : this.before;
                 $(document).off('scroll', this.handleScroll);
 
-                $('#upper_pane').addClass('loading');
+                $('.loading').show();
                 $('.reddit_post').hide();
                 $('.scrollMore').hide();
 
@@ -140,7 +127,7 @@
                         this.errors.push(e)
                 }).finally((e)=>{
                     let $upperPane = $("#upper_pane")
-                    $upperPane.removeClass('loading');
+                    $('.loading').hide();
                     $(document).on('scroll', this.handleScroll);
                     $(document).scrollTop($upperPane.prop("scrollHeight")*0.75);
                     $('.reddit_post').show();
@@ -155,9 +142,6 @@
     .reddit_post__img img {
         width: 25px;
         vertical-align: middle;
-    }
-    .floatClear {
-        clear: both;
     }
     .header--wrapper {
         height: 100px;
