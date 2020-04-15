@@ -6,8 +6,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import App from './views/App'
-import SubredditFinder from './views/SubredditFinder'
-import SubredditGraph from './views/SubredditGraph'
+import PostGraph from './views/PostGraph'
 
 const router = new VueRouter({
     mode: 'history',
@@ -15,12 +14,12 @@ const router = new VueRouter({
         {
             path: '/',
             name: 'subreddit-finder',
-            component: SubredditFinder
+            component: App
         },
         {
             path: '/subreddit-graph',
             name: 'subreddit-graph',
-            component: SubredditGraph,
+            component: PostGraph,
         },
     ],
 });
