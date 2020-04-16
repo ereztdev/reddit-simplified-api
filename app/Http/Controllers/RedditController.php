@@ -11,7 +11,6 @@ class RedditController extends Controller
     {
         $requestedSubReddit = $request->path();
         $redditResponseBody = $this->getPosts($requestedSubReddit);
-
         return view('redditExtrapolator')->with('redditResponseBody', $redditResponseBody);
     }
 
@@ -25,7 +24,7 @@ class RedditController extends Controller
         $baseUrl = "http://www.reddit.com/r/$requestedSubReddit.json?limit=$limit&$beforeOrAfter=$hash";
         $response = Http::withHeaders([
             'User-Agent' => 'android:com.example.myredditapp:v1.2.3 (by /u/erez)'
-        ])->timeout(5)->get($baseUrl);
+        ])->timeout(8)->get($baseUrl);
         $redditResponseBody = json_decode($response->body());
         if (isset($redditResponseBody->error) || count($redditResponseBody->data->children) === 0) {
             $redditResponseBody = null;

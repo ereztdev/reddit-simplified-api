@@ -13,7 +13,7 @@
                 color: #636b6f;
                 font-family: 'Roboto', sans-serif;
                 font-weight: 200;
-                height: 100vh;
+                /*height: 100vh;*/
                 margin: 0;
             }
 

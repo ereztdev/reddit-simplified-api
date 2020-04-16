@@ -13,6 +13,4 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::post('/lazyLoadCurrent', 'RedditController@lazyLoad');
-Route::post('/reloadPosts', 'RedditController@reloadPosts');
