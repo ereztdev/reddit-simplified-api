@@ -229,7 +229,7 @@
             },
             handleScroll() {
                 if ($(window).scrollTop() + $(window).height() + 2 >= $(document).height()) {
-                    this.paginate('after')
+                    this.paginate('after', false, null)
                 }
             },
             subRedditIsViable(redditResponse) {
@@ -264,7 +264,9 @@
                 return dateTime;
             },
             paginate(type, fromChart = false, event) {
-                event.preventDefault();
+                if (event){
+                    event.preventDefault();
+                }
                 let hash = type === 'after' ? this.after : this.before;
                 if (!fromChart) {
                     $(document).off('scroll', this.handleScroll);
