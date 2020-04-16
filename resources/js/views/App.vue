@@ -18,7 +18,9 @@
                 <a href="/technology">/r/technology</a>&nbsp;&nbsp;
                 <a href="/overwatch">/r/api</a>&nbsp;&nbsp;
             </h4>
-            <toggle-button v-if="subRedditName" @change="onChangeEventHandler"
+            <toggle-button id="redditMainToggle"
+                           v-if="subRedditName"
+                           @change="onChangeEventHandler"
                            :labels="{checked: 'Reddit Posts', unchecked: 'Reddit Post Graph'}"
                            :width="250"
                            :height="35"
@@ -274,6 +276,7 @@
                 $('.loading').show();
                 $('.reddit_post').hide();
                 $('.scrollMore').hide();
+                $('#redditMainToggle').hide()
 
                 if (fromChart){
                     $('#lower_pane .row').hide();
@@ -294,8 +297,10 @@
                 }).catch(e => {
                     this.errorHandler(e)
                 }).finally((e) => {
-                    let $upperPane = $("#upper_pane")
+                    let $upperPane = $("#upper_pane");
                     $('.loading').hide();
+                    $('#redditMainToggle').show();
+
                     if (!fromChart) {
                         $(document).on('scroll', this.handleScroll);
                         $(document).scrollTop($upperPane.prop("scrollHeight") * 0.75);
