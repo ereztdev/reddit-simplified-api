@@ -1,9 +1,9 @@
-##Reddit Simplified API
+## Reddit Simplified API
 ![](https://github.com/ereztdev/reddit-simplified-api/blob/master/public/imgs/Screenshot_3.png?raw=true)
 ###pre-requisites
 - **Composer** - if you don't have it, you can [download it right here](https://getcomposer.org/Composer-Setup.exe).
 - **Node.JS** -  if you don;t have it, you can [download it right here](https://nodejs.org/dist/v12.16.2/node-v12.16.2-x64.msi).
-###Installation procedures
+### Installation procedures
 * Either download or clone (`git clone https://github.com/ereztdev/reddit-simplified-api.git`) this repo into your webserver 
 * switch into the repo directory where you pulled the repo: `cd reddit-simplified-api`
 * `composer install` to install Laravel dependencies
