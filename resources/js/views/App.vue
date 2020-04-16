@@ -14,9 +14,9 @@
                 <span class="text-danger">{{erroneousSubreddit}}</span>
                 subreddit, enter an existing subreddit into the url path<br>
                 for instance:
-                <a href="/sandiego">/r/sandiego</a>&nbsp;&nbsp;
+                <a href="/AskReddit ">/r/AskReddit</a>&nbsp;&nbsp;
                 <a href="/technology">/r/technology</a>&nbsp;&nbsp;
-                <a href="/overwatch">/r/api</a>&nbsp;&nbsp;
+                <a href="/overwatch">/r/overwatch</a>&nbsp;&nbsp;
             </h4>
             <toggle-button id="redditMainToggle"
                            v-if="subRedditName"
